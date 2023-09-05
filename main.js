@@ -185,6 +185,16 @@ const renameTask = (taskName, taskID) => {
 			);
 		}
 	};
+	taskName.onkeydown = (e) => {
+		if (e.keyCode == 13) {
+			if (taskName.textContent != '') {
+				taskName.contentEditable = false;
+				tasks.map((task) =>
+					task.id == taskID ? (task.name = taskName.textContent) : ''
+				);
+			}
+		}
+	};
 };
 
 const deleteTask = (taskID) => {
