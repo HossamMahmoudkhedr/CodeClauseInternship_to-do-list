@@ -109,7 +109,7 @@ const showTasks = () => {
 // Save the task as an object in the array of tasks on click
 const addTaskToFile = (e) => {
 	e.preventDefault();
-	if (input.value != '') {
+	if (input.value.trim() != '') {
 		let task = {
 			id: new Date().getTime(),
 			name: input.value,
@@ -178,7 +178,7 @@ const renameTask = (taskName, taskID) => {
 	taskName.contentEditable = true;
 	taskName.focus();
 	taskName.onblur = () => {
-		if (taskName.textContent != '') {
+		if (taskName.textContent.trim() != '') {
 			taskName.contentEditable = false;
 			tasks.map((task) =>
 				task.id == taskID ? (task.name = taskName.textContent) : ''
@@ -187,7 +187,8 @@ const renameTask = (taskName, taskID) => {
 	};
 	taskName.onkeydown = (e) => {
 		if (e.keyCode == 13) {
-			if (taskName.textContent != '') {
+			e.preventDefault();
+			if (taskName.textContent.trim() != '') {
 				taskName.contentEditable = false;
 				tasks.map((task) =>
 					task.id == taskID ? (task.name = taskName.textContent) : ''
