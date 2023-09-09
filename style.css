@@ -128,6 +128,10 @@ nav .menu:hover {
 	color: white;
 }
 
+.priority.no {
+	min-width: 95px;
+}
+
 .done .task {
 	position: relative;
 }
